@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class UserInfoCommand implements CommandExecutor {
 
     private final UserManager userManager;
-    private UserToMessage messageToUser = new UserToMessage();
+    private final UserToMessage messageToUser = new UserToMessage();
     public UserInfoCommand(UserManager userManager){
         this.userManager = userManager;
     }
