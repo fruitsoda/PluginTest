@@ -50,7 +50,8 @@ processResources {
 
 jar {
     archiveFileName = 'TestPlugin.jar'
-    destinationDirectory = file("D:\\PluginServer\\plugins")
+    //destinationDirectory = file("D:\\PluginServer\\plugins")
+    destinationDirectory = file("/Users/khl/Desktop/MinecraftServer/plugins")
     manifest {
         attributes 'Main-Class' : 'org.fruit.PluginTest.Main'
     }

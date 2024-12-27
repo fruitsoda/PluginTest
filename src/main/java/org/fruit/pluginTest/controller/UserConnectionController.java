@@ -1,21 +1,21 @@
 package org.fruit.pluginTest.controller;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.fruit.pluginTest.Main;
+import org.fruit.pluginTest.entity.User;
+import org.fruit.pluginTest.entity.UserToMessage;
 import org.fruit.pluginTest.service.UserManager;
-
-import javax.xml.stream.events.EntityReference;
 
 public class UserConnectionController implements Listener {
 
     private final UserManager userManager;
-
+    private final UserToMessage messageToUser = new UserToMessage();
     UserConnectionController(UserManager userManager){
         this.userManager = userManager;
     }
@@ -34,13 +34,16 @@ public class UserConnectionController implements Listener {
 
     @EventHandler
     public void onPlayerKilled(PlayerDeathEvent event){
+        Player player = event.getPlayer();
         userManager.addKills(event.getPlayer());
+        User playerData = userManager.getUserData(player);
+        messageToUser.uInfo(player, playerData);
         Main.getServerInstance().getLogger().info("플레이어 죽은 숫자 증가");
     }
 
     @EventHandler
     public void onPlayerKillsAny(EntityDeathEvent event){
-        
+
     }
 }
 // Controller는 이벤트 처리 담당하는 역할
