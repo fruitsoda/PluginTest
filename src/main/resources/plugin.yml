@@ -1,0 +1,8 @@
+name: PluginTest
+version: '1.0-SNAPSHOT'
+main: org.fruit.pluginTest.Main
+api-version: '1.20'
+
+commands:
+  uinfo:
+    description: display player data
